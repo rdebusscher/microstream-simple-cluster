@@ -1,0 +1,29 @@
+# Build artifacts
+mvn clean package
+
+# Run Server
+# Run
+
+# Run client (requires Payara Micro)
+java -jar payara-micro.jar /Users/rubus/code/microstream/microstream-simple-cluster/app-client/target/app.war
+
+# Run client with debug (requires Payara Micro)
+java "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005" -jar payara-micro.jar /Users/rubus/code/microstream/microstream-simple-cluster/app-client/target/app.war
+
+# Test initial communication setup and replication
+curl localhost:8080/app/product
+
+
+# Run client 2 (requires Payara Micro)
+java -jar payara-micro.jar --port 8181 /Users/rubus/code/microstream/microstream-simple-cluster/app-client/target/app.war
+
+# init client 2
+
+curl localhost:8181/app/product
+
+# Add product through client 2
+
+curl -X POST 'http://localhost:8181/app/product/' \
+--header 'Content-Type: application/json' \
+--data-raw '{"description":"Round crispy fruit","id":"Ap","name":"Apple","rating":4}'
+
