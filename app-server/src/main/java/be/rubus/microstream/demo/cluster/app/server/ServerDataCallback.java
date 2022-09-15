@@ -1,4 +1,4 @@
-package e.rubus.microstream.demo.cluster.app.server;
+package be.rubus.microstream.demo.cluster.app.server;
 
 import be.rubus.microstream.demo.cluster.DataCallback;
 import be.rubus.microstream.demo.cluster.app.model.DataRoot;
